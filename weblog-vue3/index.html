@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Weblog</title>
+    <!-- 首屏渲染前应用主题，避免深色模式下刷新页面时闪白（key 与 src/composables/theme.js 保持一致） -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('weblog-theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || ((!saved || saved === 'auto') && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) { /* localStorage 不可用时忽略 */ }
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- 指定挂载点，用于渲染组件 -->
+    <div id="app"></div>
+    <!-- 引入主 js 文件 -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

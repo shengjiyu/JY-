@@ -1,0 +1,32 @@
+# ===== 敏感配置（切勿提交）=====
+jyblog-springboot/config/
+**/application-local.yml
+.env.local
+.env.*.local
+
+# ===== 本地运行环境 / 数据 =====
+jdk/
+minio/
+*.log
+logs/
+
+# ===== 构建产物 =====
+target/
+dist/
+dist-ssr/
+weblog-vue3/stats.html
+node_modules/
+
+# ===== IDE / 系统文件 =====
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+
+# ===== TLS 证书 / 私钥（切勿提交）=====
+ssl/
+*.key
+*.pem

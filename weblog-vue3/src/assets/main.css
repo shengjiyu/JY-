@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================== 主题色变量 ============================== */
+:root {
+  --wb-bg: #f4f6f9;
+  --wb-text: #4c4e4d;
+  --wb-heading: #1f2328;
+  --wb-card: #ffffff;
+  --wb-border: #e5e7eb;
+  --wb-scrollbar: #cbd5e1;
+  color-scheme: light;
+}
+
+html.dark {
+  --wb-bg: #0f1115;
+  --wb-text: #c9d1d9;
+  --wb-heading: #e6edf3;
+  --wb-card: #1f2937;
+  --wb-border: #374151;
+  --wb-scrollbar: #4b5563;
+  color-scheme: dark;
+}
+
+body {
+  font-family: -apple-system-font, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
+  color: var(--wb-text);
+  font-size: 16px;
+  background: var(--wb-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 1px transparent inset!important;
+}
+
+/* 选中文字颜色 */
+::selection {
+  background: rgba(59, 130, 246, 0.25);
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--wb-scrollbar);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 键盘焦点可见性（无障碍） */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* 前台通用卡片：轻微悬浮效果 */
+.wb-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.wb-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -12px rgba(15, 23, 42, 0.18);
+}
+html.dark .wb-card:hover {
+  box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.6);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wb-card,
+  .wb-card:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* 主题切换扩散动画（View Transitions API），关闭默认的淡入淡出 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* nprogress 顶部加载条 */
+#nprogress .bar {
+  background: #3b82f6 !important;
+  height: 3px !important;
+}
